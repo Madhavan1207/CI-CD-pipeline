@@ -1,41 +1,25 @@
 pipeline {
-  agent any
+    agent any
 
-  stages {
-    stage('Hello') {
-      steps {
-        echo 'Hello, Jenkins is working!'
-      }
+    options {
+        skipDefaultCheckout()
     }
 
-    stage('Build') {
-      steps {
-        echo 'This is where build commands go.'
-        sh 'echo Building project...'
-      }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
     }
-
-    stage('Test') {
-      steps {
-        echo 'Running tests...'
-        sh 'echo Tests completed successfully.'
-      }
-    }
-
-    stage('Deploy') {
-      steps {
-        echo 'Deployment step here.'
-      }
-    }
-  }
-
-  post {
-    success {
-      echo 'Pipeline completed successfully!'
-    }
-    failure {
-      echo 'Pipeline failed!'
-    }
-  }
 }
-
