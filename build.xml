@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<project name="ANTTestProject" default="compile" basedir=".">
+
+    <property name="src" value="src"/>
+    <property name="build" value="build"/>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src}" destdir="${build}"/>
+        <echo message="Compilation successful using Ant in Jenkins!"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <echo message="Cleaned build folder."/>
+    </target>
+
+</project>
